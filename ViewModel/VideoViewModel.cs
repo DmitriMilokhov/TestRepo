@@ -75,13 +75,13 @@ namespace EmvuCV_VideoPlayer.ViewModel
 
         private void Capture_ImageGrabbed(object sender, EventArgs e)
         {
-            //VideoCapture capture = sender as VideoCapture;
-            //if (capture != null)
-            //{
-            //    Mat mat = new Mat();
-            //    capture.Retrieve(mat);
-            //    Frame = ConvertBitmapToBitmapSource(mat.ToImage<Bgr, byte>().Bitmap);
-            //}            
+            VideoCapture capture = sender as VideoCapture;
+            if (capture != null)
+            {
+                Mat mat = new Mat();
+                capture.Retrieve(mat);
+                Frame = ConvertBitmapToBitmapSource(mat.ToImage<Bgr, byte>().Bitmap);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
