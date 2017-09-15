@@ -24,7 +24,7 @@ namespace EmvuCV_VideoPlayer
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new VideoViewModel();
+            DataContext = new VideoViewModel(this.Dispatcher);
         }
     }
 }

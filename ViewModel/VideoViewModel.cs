@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace EmvuCV_VideoPlayer.ViewModel
 {
@@ -20,11 +21,13 @@ namespace EmvuCV_VideoPlayer.ViewModel
         private Repository repository = new Repository();
         private Video video;
         private BitmapSource frame;
+        private Dispatcher UIDispatcher;
 
-        public VideoViewModel()
+        public VideoViewModel(Dispatcher uiDispatcher)
         {
             string fileName = repository.GetNameFromCommandArg("-video");
             this.video = new Video(fileName);
+            UIDispatcher = uiDispatcher;
         }
 
         public string Name
@@ -80,7 +83,9 @@ namespace EmvuCV_VideoPlayer.ViewModel
             {
                 Mat mat = new Mat();
                 capture.Retrieve(mat);
-                Frame = ConvertBitmapToBitmapSource(mat.ToImage<Bgr, byte>().Bitmap);
+
+                UIDispatcher.Invoke(() => { Frame = ConvertBitmapToBitmapSource(mat.ToImage<Bgr, byte>().Bitmap);  });
+                Thread.Sleep((int)capture.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.Fps));
             }
         }
 
