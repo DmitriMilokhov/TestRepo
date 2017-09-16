@@ -83,8 +83,8 @@ namespace EmvuCV_VideoPlayer.ViewModel
             {
                 Mat mat = new Mat();
                 capture.Retrieve(mat);
-
-                UIDispatcher.Invoke(() => { Frame = ConvertBitmapToBitmapSource(mat.ToImage<Bgr, byte>().Bitmap);  });
+                Image<Bgr, byte> currentImage = mat.ToImage<Bgr, byte>();
+                UIDispatcher.Invoke(() => { Frame = ConvertBitmapToBitmapSource(currentImage.Bitmap);  });
                 Thread.Sleep((int)capture.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.Fps));
             }
         }
