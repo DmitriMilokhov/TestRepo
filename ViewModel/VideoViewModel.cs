@@ -21,13 +21,11 @@ namespace EmvuCV_VideoPlayer.ViewModel
         private Repository repository = new Repository();
         private Video video;
         private BitmapSource frame;
-        private Dispatcher UIDispatcher;
 
-        public VideoViewModel(Dispatcher uiDispatcher)
+        public VideoViewModel()
         {
             string fileName = repository.GetNameFromCommandArg("-video");
             this.video = new Video(fileName);
-            UIDispatcher = uiDispatcher;
         }
 
         public string Name
@@ -68,25 +66,20 @@ namespace EmvuCV_VideoPlayer.ViewModel
                 return playVideoCommand ??
                     (playVideoCommand = new RelayCommand(obj =>
                     {
-                        VideoCapture currCapture = obj as VideoCapture;
-                        currCapture.ImageGrabbed += Capture_ImageGrabbed;
-                        currCapture.Start();
+                        DispatcherTimer My_Timer = new DispatcherTimer();
+                        int FPS = 30;
+                        My_Timer.Interval = new TimeSpan(0,0,0,0,1000/FPS);
+                        My_Timer.Tick += new EventHandler(My_Timer_Tick);
+                        My_Timer.Start();
                     },
                     (obj) => video.Capture != null));
             }
         }
 
-        private void Capture_ImageGrabbed(object sender, EventArgs e)
+        private void My_Timer_Tick(object sender, EventArgs e)
         {
-            VideoCapture capture = sender as VideoCapture;
-            if (capture != null)
-            {
-                Mat mat = new Mat();
-                capture.Retrieve(mat);
-                Image<Bgr, byte> currentImage = mat.ToImage<Bgr, byte>();
-                UIDispatcher.Invoke(() => { Frame = ConvertBitmapToBitmapSource(currentImage.Bitmap);  });
-                Thread.Sleep((int)capture.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.Fps));
-            }
+            Image<Bgr, byte> currentImage = Capture.QueryFrame().ToImage<Bgr, byte>();
+            Frame = ConvertBitmapToBitmapSource(currentImage.Bitmap);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
