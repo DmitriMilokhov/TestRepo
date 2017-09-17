@@ -68,7 +68,7 @@ namespace EmvuCV_VideoPlayer.ViewModel
                     (playVideoCommand = new RelayCommand(obj =>
                     {
                         DispatcherTimer My_Timer = new DispatcherTimer();
-                        int FPS = 60;
+                        int FPS = (int)Capture.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.Fps);
                         My_Timer.Interval = new TimeSpan(0,0,0,0,1000/FPS);
                         My_Timer.Tick += new EventHandler(My_Timer_Tick);
                         
