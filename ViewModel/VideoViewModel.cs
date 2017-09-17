@@ -5,6 +5,7 @@ using EmvuCV_VideoPlayer.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -67,9 +68,10 @@ namespace EmvuCV_VideoPlayer.ViewModel
                     (playVideoCommand = new RelayCommand(obj =>
                     {
                         DispatcherTimer My_Timer = new DispatcherTimer();
-                        int FPS = 30;
+                        int FPS = 60;
                         My_Timer.Interval = new TimeSpan(0,0,0,0,1000/FPS);
                         My_Timer.Tick += new EventHandler(My_Timer_Tick);
+                        
                         My_Timer.Start();
                     },
                     (obj) => video.Capture != null));
@@ -78,8 +80,17 @@ namespace EmvuCV_VideoPlayer.ViewModel
 
         private void My_Timer_Tick(object sender, EventArgs e)
         {
-            Image<Bgr, byte> currentImage = Capture.QueryFrame().ToImage<Bgr, byte>();
-            Frame = ConvertBitmapToBitmapSource(currentImage.Bitmap);
+            double difference = Capture.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.PosMsec);
+            Name = (difference / 1000).ToString();
+            if (Capture.QueryFrame() != null)
+            {
+                Image<Bgr, byte> currentImage = Capture.QueryFrame().ToImage<Bgr, byte>();
+                Frame = ConvertBitmapToBitmapSource(currentImage.Bitmap);
+            }
+            else
+            {
+                ((DispatcherTimer)sender).Stop();
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
