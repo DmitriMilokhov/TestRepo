@@ -1,0 +1,9 @@
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\VideoPlayerTests\bin\Debug\VideoPlayerTests.dll
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\VideoPlayerTests\bin\Debug\VideoPlayerTests.pdb
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\VideoPlayerTests\bin\Debug\EmvuCV_VideoPlayer.exe
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\VideoPlayerTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\VideoPlayerTests\bin\Debug\Emgu.CV.World.dll
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\VideoPlayerTests\bin\Debug\EmvuCV_VideoPlayer.pdb
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\VideoPlayerTests\obj\Debug\VideoPlayerTests.csprojResolveAssemblyReference.cache
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\VideoPlayerTests\obj\Debug\VideoPlayerTests.dll
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\VideoPlayerTests\obj\Debug\VideoPlayerTests.pdb
