@@ -11,7 +11,7 @@ using System.Linq;
 using EmvuCV_VideoPlayer.Infrustructure;
 using System.Drawing;
 
-namespace EmvuCV_VideoPlayer.Concrete
+namespace EmvuCV_VideoPlayer.Model
 {
     [Serializable]
     public class AdditionalObject

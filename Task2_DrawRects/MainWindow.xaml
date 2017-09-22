@@ -78,6 +78,7 @@
         <StackPanel Grid.Row="3" Orientation="Horizontal">
             <Button Command="{Binding PlayVideoCommand}" CommandParameter="{Binding Capture}" Content="Play"/>
             <Button Command="{Binding PauseVideoCommand}" CommandParameter="{Binding Capture}" Content="Pause"/>
+            <Button Command="{Binding OpenSettingWindowCommand}" Content="Settings" />
             <GroupBox Header="Source">
                 <ListBox Style="{StaticResource RadioButtonList}" SelectedValuePath="Tag" SelectedValue="{Binding Path=SelectedSerializator}">
                     <ListBoxItem Tag="XmlSerializator">From XML</ListBoxItem>

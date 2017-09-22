@@ -1,7 +1,8 @@
 ﻿using EmvuCV_VideoPlayer.Abstract;
-using EmvuCV_VideoPlayer.Concrete;
+using EmvuCV_VideoPlayer.Model;
 using System;
 using System.IO;
+using System.Windows;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -19,11 +20,19 @@ namespace EmvuCV_VideoPlayer.Concrete.Deserializers
             string text = File.ReadAllText(path);
             text = text.Replace("%YAML:1.0", "");
             text = text.Replace(":", ": ");
+            Tracks tracks = null;
+            try
+            {
+                StringReader input = new StringReader(text);
+                Deserializer deserializer = new DeserializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
+                tracks = deserializer.Deserialize<Tracks>(input);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-            StringReader input = new StringReader(text);
-            Deserializer deserializer = new DeserializerBuilder().WithNamingConvention(new CamelCaseNamingConvention()).Build();
-            Tracks tracks = deserializer.Deserialize<Tracks>(input);
-            return tracks ?? null;
+            return tracks;
         }
     }
 }

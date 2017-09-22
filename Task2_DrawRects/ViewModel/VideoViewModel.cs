@@ -3,7 +3,6 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using EmvuCV_VideoPlayer.Abstract;
 using EmvuCV_VideoPlayer.Concrete;
-using EmvuCV_VideoPlayer.HackTheSystem;
 using EmvuCV_VideoPlayer.Infrustructure;
 using EmvuCV_VideoPlayer.Concrete.Deserializers;
 using EmvuCV_VideoPlayer.Model;
@@ -15,25 +14,34 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using EmvuCV_VideoPlayer.View;
 
 namespace EmvuCV_VideoPlayer.ViewModel
 {
     internal class VideoViewModel : INotifyPropertyChanged
     {
+        #region Fields
+
         private Repository repository = new Repository();
+
         private string fileName;
         private Video video;
         private BitmapSource frame;
         private double timestamp;
         private Tracks tracks;
         private Dispatcher dispathcer;
-        private Serializators selectedSerializator;
+        private Deserializators selectedSerializator;
 
         private RelayCommand playVideoCommand;
         private RelayCommand pauseVideoCommand;
+        private RelayCommand openSettingWindowCommand;
 
         private bool isNameShowModeSelected = true;
         private bool isCoordinateShowModeSelected = true;
+
+        #endregion
+
+        #region Properties
 
         public VideoViewModel(Dispatcher UIDispatcher)
         {
@@ -92,7 +100,7 @@ namespace EmvuCV_VideoPlayer.ViewModel
             get { return video.Duration; }
         }
 
-        public Serializators SelectedSerializator
+        public Deserializators SelectedSerializator
         {
             get { return selectedSerializator; }
             set
@@ -128,15 +136,20 @@ namespace EmvuCV_VideoPlayer.ViewModel
             }
         }
 
+        #endregion
+
+        #region Commands
+
         public RelayCommand PlayVideoCommand
         {
             get
             {
                 return playVideoCommand ??
                     (playVideoCommand = new RelayCommand(obj =>
-                    {                   
-                        IAdditionalObjectsDeserializable serializator = SetSerializator();
-                        tracks = serializator.Deserialize();
+                    {
+                        string serializationFilePath = "";
+                        IAdditionalObjectsDeserializable serializer = SetSerializator(ref serializationFilePath);
+                        tracks = serializer.Deserialize(serializationFilePath);
 
                         if (Capture.GetGrabberThreadState() != GrabStates.Pause)
                         {
@@ -147,11 +160,13 @@ namespace EmvuCV_VideoPlayer.ViewModel
                             Capture.ImageGrabbed += Capture_ImageGrabbed;
                         }
 
-                        Capture.Start();
+                        if(tracks != null)
+                            Capture.Start();
                     },
-                    (obj) => Capture.IsOpened ));
+                    (obj) => Capture.IsOpened));
             }
         }
+
         public RelayCommand PauseVideoCommand
         {
             get
@@ -164,6 +179,21 @@ namespace EmvuCV_VideoPlayer.ViewModel
                     (obj) => Capture.IsOpened));
             }
         }
+
+        public RelayCommand OpenSettingWindowCommand
+        {
+            get
+            {
+                return openSettingWindowCommand ??
+                    (openSettingWindowCommand = new RelayCommand(obj =>
+                    {
+                        SettingView settingView = new SettingView();
+                        settingView.Show();
+                    }));
+            }
+        }
+
+        #endregion
 
         private void Capture_ImageGrabbed(object sender, EventArgs e)
         {
@@ -182,7 +212,7 @@ namespace EmvuCV_VideoPlayer.ViewModel
                         Thread.Sleep((int)Capture.GetCaptureProperty(CapProp.Fps));
                     });
                 }
-                catch (Exception ex) { }            
+                catch (Exception ex) { }
             }
         }
 
@@ -210,13 +240,17 @@ namespace EmvuCV_VideoPlayer.ViewModel
             }
         }
 
-        private IAdditionalObjectsDeserializable SetSerializator()
+        private IAdditionalObjectsDeserializable SetSerializator(ref string filePath)
         {
+            ObservableCollection<SerializatorsSetting> serializationSettings = repository.LoadSettingsFromXml<SerializatorsSetting>();
             switch (selectedSerializator)
             {
-                case Serializators.XmlSerializator:
+                case Deserializators.XmlSerializator:
+                    filePath = serializationSettings.FirstOrDefault(s => s.SeriaizatorType == Deserializators.XmlSerializator).FilePath;
                     return new XMLDeserializer();
-                case Serializators.YamlSerializator:
+
+                case Deserializators.YamlSerializator:
+                    filePath = serializationSettings.FirstOrDefault(s => s.SeriaizatorType == Deserializators.YamlSerializator).FilePath;
                     return new YAMLDeserializer();
                 default:
                     return new XMLDeserializer();

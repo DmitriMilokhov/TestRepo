@@ -1,11 +1,7 @@
-﻿using EmvuCV_VideoPlayer.Abstract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Emgu.CV;
+﻿using Emgu.CV;
 using Emgu.CV.Structure;
+using EmvuCV_VideoPlayer.Abstract;
+using EmvuCV_VideoPlayer.Model;
 using System.Drawing;
 
 namespace EmvuCV_VideoPlayer.Concrete

@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 using YamlDotNet.Serialization;
 
-namespace EmvuCV_VideoPlayer.Concrete
+namespace EmvuCV_VideoPlayer.Model
 {
     [Serializable]
     public class TimePoint

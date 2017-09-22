@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ArrayOfSerializatorsSetting xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SerializatorsSetting>
+    <SeriaizatorType>XmlSerializator</SeriaizatorType>
+    <FilePath>D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\bin\Debug\tracks-cyprus.handmade.xml</FilePath>
+  </SerializatorsSetting>
+  <SerializatorsSetting>
+    <SeriaizatorType>YamlSerializator</SeriaizatorType>
+    <FilePath>D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\bin\Debug\cyprus.tracks.yaml</FilePath>
+  </SerializatorsSetting>
+</ArrayOfSerializatorsSetting>

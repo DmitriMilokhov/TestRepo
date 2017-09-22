@@ -1,5 +1,5 @@
 ﻿using EmvuCV_VideoPlayer.Abstract;
-using EmvuCV_VideoPlayer.Concrete;
+using EmvuCV_VideoPlayer.Model;
 using System;
 using System.IO;
 using System.Windows;
@@ -17,11 +17,18 @@ namespace EmvuCV_VideoPlayer.Concrete.Deserializers
             }
 
             Tracks tracks = null;
-            using (Stream fStream = new FileStream(path, FileMode.Open,
-                 FileAccess.Read, FileShare.None))
+            try
             {
-                XmlSerializer xmlFormat = new XmlSerializer(typeof(Tracks));
-                tracks = (Tracks)xmlFormat.Deserialize(fStream);
+                using (Stream fStream = new FileStream(path, FileMode.Open,
+                     FileAccess.Read, FileShare.None))
+                {
+                    XmlSerializer xmlFormat = new XmlSerializer(typeof(Tracks));
+                    tracks = (Tracks)xmlFormat.Deserialize(fStream);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
             return tracks;
         }

@@ -1,6 +1,6 @@
 ﻿using Emgu.CV;
 using Emgu.CV.Structure;
-using EmvuCV_VideoPlayer.Concrete;
+using EmvuCV_VideoPlayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

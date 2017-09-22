@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmvuCV_VideoPlayer.Infrustructure
 {
-    public enum Serializators
+    public enum Deserializators
     {
         XmlSerializator,
         YamlSerializator

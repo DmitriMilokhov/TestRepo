@@ -1,4 +1,4 @@
-﻿using EmvuCV_VideoPlayer.Concrete;
+﻿using EmvuCV_VideoPlayer.Model;
 
 namespace EmvuCV_VideoPlayer.Abstract
 {

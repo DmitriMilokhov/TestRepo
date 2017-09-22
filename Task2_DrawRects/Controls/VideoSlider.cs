@@ -1,5 +1,4 @@
 ﻿using Emgu.CV.CvEnum;
-using EmvuCV_VideoPlayer.HackTheSystem;
 using EmvuCV_VideoPlayer.Infrustructure;
 using EmvuCV_VideoPlayer.ViewModel;
 using System.Threading;

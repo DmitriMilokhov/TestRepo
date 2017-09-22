@@ -1,12 +1,14 @@
-﻿using EmvuCV_VideoPlayer.Concrete;
+﻿using EmvuCV_VideoPlayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Serialization;
 
 namespace EmvuCV_VideoPlayer.Infrustructure
 {
@@ -75,6 +77,20 @@ namespace EmvuCV_VideoPlayer.Infrustructure
                 resultPoint = new TimePoint(time, x, y);
             }
             return resultPoint;
+        }
+
+        public ObservableCollection<T> LoadSettingsFromXml<T>(string filePath = "Settings.xml")
+        {
+            if (File.Exists(filePath))
+            {
+                using (Stream fStream = new FileStream(filePath, FileMode.Open,
+                    FileAccess.Read, FileShare.None))
+                {
+                    XmlSerializer xmlFormat = new XmlSerializer(typeof(ObservableCollection<T>));
+                    return (ObservableCollection<T>)xmlFormat.Deserialize(fStream);
+                }
+            }
+            return null;
         }
     }
 }

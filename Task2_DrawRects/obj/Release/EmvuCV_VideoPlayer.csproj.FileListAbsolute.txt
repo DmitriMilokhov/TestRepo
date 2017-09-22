@@ -17,3 +17,5 @@ D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Re
 D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Release\EmvuCV_VideoPlayer.exe
 D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Release\EmvuCV_VideoPlayer.pdb
 D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Release\EmvuCV_VideoPlayer.csprojResolveAssemblyReference.cache
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Release\View\SettingView.g.cs
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Release\View\SettingView.baml
