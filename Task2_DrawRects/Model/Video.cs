@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Emgu.CV;
+using Emgu.CV.CvEnum;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using Emgu.CV;
-using Emgu.CV.Structure;
 
 namespace EmvuCV_VideoPlayer.Model
 {
@@ -14,7 +9,6 @@ namespace EmvuCV_VideoPlayer.Model
     {
         private string name;
         private VideoCapture capture;
-        private double timestamp;
 
         public string Name
         {
@@ -36,9 +30,14 @@ namespace EmvuCV_VideoPlayer.Model
             }
         }
 
-        public double Timestamp
+        public double CurrentTimestamp
         {
-            get { return capture.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.PosMsec); }
+            get { return capture.GetCaptureProperty(CapProp.PosMsec); }
+        }
+
+        public double Duration
+        {
+            get { return capture.GetCaptureProperty(CapProp.FrameCount) / capture.GetCaptureProperty(CapProp.Fps); }
         }
 
         public Video(string fileName)

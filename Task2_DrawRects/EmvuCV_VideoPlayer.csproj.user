@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>-video D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task1_OpenVideo\bin\Debug\Wildlife.wmv</StartArguments>
+    <StartArguments>-video D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\bin\Debug\Everest.wmv</StartArguments>
   </PropertyGroup>
 </Project>

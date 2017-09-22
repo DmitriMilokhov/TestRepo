@@ -1,1 +1,17 @@
 D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\bin\Debug\EmvuCV_VideoPlayer.exe.config
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\bin\Debug\EmvuCV_VideoPlayer.exe
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\bin\Debug\EmvuCV_VideoPlayer.pdb
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\bin\Debug\YamlDotNet.dll
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\bin\Debug\YamlDotNet.xml
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\EmvuCV_VideoPlayer.csprojResolveAssemblyReference.cache
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\MainWindow.g.cs
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\App.g.cs
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\EmvuCV_VideoPlayer_MarkupCompile.cache
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\EmvuCV_VideoPlayer_MarkupCompile.lref
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\MainWindow.baml
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\EmvuCV_VideoPlayer.g.resources
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\EmvuCV_VideoPlayer.Properties.Resources.resources
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\EmvuCV_VideoPlayer.csproj.GenerateResource.Cache
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\EmvuCV_VideoPlayer.exe
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\EmvuCV_VideoPlayer.pdb
+D:\Milokhov\Educations\EducTasksRepository\csharp-trening\Task2_DrawRects\obj\Debug\GeneratedInternalTypeHelper.g.cs

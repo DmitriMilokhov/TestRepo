@@ -1,42 +1,55 @@
 ﻿using Emgu.CV;
+using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
+using EmvuCV_VideoPlayer.Abstract;
+using EmvuCV_VideoPlayer.Concrete;
+using EmvuCV_VideoPlayer.HackTheSystem;
 using EmvuCV_VideoPlayer.Infrustructure;
+using EmvuCV_VideoPlayer.Concrete.Deserializers;
 using EmvuCV_VideoPlayer.Model;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
 namespace EmvuCV_VideoPlayer.ViewModel
 {
-    public class VideoViewModel : INotifyPropertyChanged
+    internal class VideoViewModel : INotifyPropertyChanged
     {
         private Repository repository = new Repository();
+        private string fileName;
         private Video video;
         private BitmapSource frame;
         private double timestamp;
+        private Tracks tracks;
+        private Dispatcher dispathcer;
+        private Serializators selectedSerializator;
 
-        public VideoViewModel()
+        private RelayCommand playVideoCommand;
+        private RelayCommand pauseVideoCommand;
+
+        private bool isNameShowModeSelected = true;
+        private bool isCoordinateShowModeSelected = true;
+
+        public VideoViewModel(Dispatcher UIDispatcher)
         {
-            string fileName = repository.GetNameFromCommandArg("-video");
+            fileName = repository.GetNameFromCommandArg("-video");
             if (string.IsNullOrEmpty(fileName))
             {
-                fileName = Environment.CurrentDirectory + "\\wildlife.wmv";
+                fileName = Environment.CurrentDirectory + "\\Everest.wmv";
             }
-            this.video = new Video(fileName);
+
+            video = new Video(fileName);
+            dispathcer = UIDispatcher;
         }
 
         public string Name
         {
-            get { return video.Name; }
+            get { return video.Name.Split('\\').Last(); }
             set
             {
                 video.Name = value;
@@ -66,7 +79,7 @@ namespace EmvuCV_VideoPlayer.ViewModel
 
         public double Timestamp
         {
-            get { return timestamp; }
+            get { return Math.Round(timestamp / 1000, 2); }
             set
             {
                 timestamp = value;
@@ -74,36 +87,139 @@ namespace EmvuCV_VideoPlayer.ViewModel
             }
         }
 
-        private RelayCommand playVideoCommand;
+        public double Duration
+        {
+            get { return video.Duration; }
+        }
+
+        public Serializators SelectedSerializator
+        {
+            get { return selectedSerializator; }
+            set
+            {
+                selectedSerializator = value;
+                OnPropertyChanged("SelectedSerializator");
+            }
+        }
+
+        public bool IsNameShowModeSelected
+        {
+            get { return isNameShowModeSelected; }
+            set
+            {
+                if (isNameShowModeSelected != value)
+                {
+                    isNameShowModeSelected = value;
+                    OnPropertyChanged("IsNameShowModeSelected");
+                }
+            }
+        }
+
+        public bool IsCoordinateShowModeSelected
+        {
+            get { return isCoordinateShowModeSelected; }
+            set
+            {
+                if (isCoordinateShowModeSelected != value)
+                {
+                    isCoordinateShowModeSelected = value;
+                    OnPropertyChanged("IsCoordinateShowModeSelected");
+                }
+            }
+        }
+
         public RelayCommand PlayVideoCommand
         {
             get
             {
                 return playVideoCommand ??
                     (playVideoCommand = new RelayCommand(obj =>
-                    {
-                        DispatcherTimer My_Timer = new DispatcherTimer();
-                        int FPS = (int)Capture.GetCaptureProperty(Emgu.CV.CvEnum.CapProp.Fps);
-                        My_Timer.Interval = new TimeSpan(0,0,0,0,1000/FPS);
-                        My_Timer.Tick += new EventHandler(My_Timer_Tick);
-                        
-                        My_Timer.Start();
+                    {                   
+                        IAdditionalObjectsDeserializable serializator = SetSerializator();
+                        tracks = serializator.Deserialize();
+
+                        if (Capture.GetGrabberThreadState() != GrabStates.Pause)
+                        {
+                            Capture.Stop();
+                            Thread.Sleep(10);
+                            Capture.Dispose();
+                            video = new Video(fileName);
+                            Capture.ImageGrabbed += Capture_ImageGrabbed;
+                        }
+
+                        Capture.Start();
                     },
-                    (obj) => video.Capture != null));
+                    (obj) => Capture.IsOpened ));
+            }
+        }
+        public RelayCommand PauseVideoCommand
+        {
+            get
+            {
+                return pauseVideoCommand ??
+                    (pauseVideoCommand = new RelayCommand(obj =>
+                    {
+                        Capture.Pause();
+                    },
+                    (obj) => Capture.IsOpened));
             }
         }
 
-        private void My_Timer_Tick(object sender, EventArgs e)
+        private void Capture_ImageGrabbed(object sender, EventArgs e)
         {
-            Timestamp = Math.Round(video.Timestamp / 1000, 2);
-            if (Capture.QueryFrame() != null)
+            Timestamp = video.CurrentTimestamp;
+            Mat mCapture = new Mat();
+            Capture.Retrieve(mCapture);
+            if (mCapture != null)
             {
-                Image<Bgr, byte> currentImage = Capture.QueryFrame().ToImage<Bgr, byte>();
-                Frame = ConvertBitmapToBitmapSource(currentImage.Bitmap);
+                try
+                {
+                    dispathcer.Invoke(() =>
+                    {
+                        Image<Bgr, byte> currentImage = mCapture.ToImage<Bgr, byte>();
+                        DrawAdditionalObjects(currentImage);
+                        Frame = repository.ConvertBitmapToBitmapSource(currentImage.Bitmap);
+                        Thread.Sleep((int)Capture.GetCaptureProperty(CapProp.Fps));
+                    });
+                }
+                catch (Exception ex) { }            
             }
-            else
+        }
+
+        private void DrawAdditionalObjects(Image<Bgr, byte> imageToDraw)
+        {
+            EmguCVDrawer drawer;
+            TimePoint currentPoint;
+            if (tracks.Objects.Length > 0)
             {
-                ((DispatcherTimer)sender).Stop();
+                foreach (AdditionalObject obj in tracks.Objects)
+                {
+                    double[] timeValues = obj.Points.Select(p => p.Time).ToArray();
+                    if (video.CurrentTimestamp >= timeValues.Min() && video.CurrentTimestamp <= timeValues.Max())
+                    {
+                        currentPoint = repository.LagrangeInterpolatePoint(video.CurrentTimestamp, obj.Points);
+                        drawer = new RectangleDrawer(imageToDraw, currentPoint);
+
+                        if (isCoordinateShowModeSelected)
+                            drawer = new CoordinatedRectangleDrawer(drawer);
+                        if (isNameShowModeSelected)
+                            drawer = new NamedRectangleDrawer(drawer, obj.Name);
+                        obj.Draw(drawer);
+                    }
+                }
+            }
+        }
+
+        private IAdditionalObjectsDeserializable SetSerializator()
+        {
+            switch (selectedSerializator)
+            {
+                case Serializators.XmlSerializator:
+                    return new XMLDeserializer();
+                case Serializators.YamlSerializator:
+                    return new YAMLDeserializer();
+                default:
+                    return new XMLDeserializer();
             }
         }
 
@@ -115,20 +231,6 @@ namespace EmvuCV_VideoPlayer.ViewModel
             {
                 PropertyChanged(this, new PropertyChangedEventArgs(prop));
             }
-        }
-
-        private BitmapSource ConvertBitmapToBitmapSource(System.Drawing.Bitmap bitmap)
-        {
-            var bitmapData = bitmap.LockBits(
-                new System.Drawing.Rectangle(0, 0, bitmap.Width, bitmap.Height),
-                System.Drawing.Imaging.ImageLockMode.ReadOnly, bitmap.PixelFormat);
-
-            var bitmapSource = BitmapSource.Create(
-                bitmapData.Width, bitmapData.Height, 96, 96, PixelFormats.Bgr24, null,
-                bitmapData.Scan0, bitmapData.Stride * bitmapData.Height, bitmapData.Stride);
-
-            bitmap.UnlockBits(bitmapData);
-            return bitmapSource;
         }
     }
 }

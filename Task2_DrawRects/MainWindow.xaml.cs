@@ -13,7 +13,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using EmvuCV_VideoPlayer.ViewModel;
-using EmvuCV_VideoPlayer.Infrustructure.Deserializers;
 
 namespace EmvuCV_VideoPlayer
 {
@@ -25,9 +24,7 @@ namespace EmvuCV_VideoPlayer
         public MainWindow()
         {
             InitializeComponent();
-            YAMLDeserializer des = new YAMLDeserializer();
-            des.Deserialize(Environment.CurrentDirectory + "\\cyprus.tracks.yaml"); 
-            DataContext = new VideoViewModel();
+            DataContext = new VideoViewModel(this.Dispatcher);
         }
     }
 }

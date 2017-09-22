@@ -69,15 +69,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Abstract\DrawerDecorator.cs" />
     <Compile Include="Abstract\IAdditionalObjectsDeserializable.cs" />
-    <Compile Include="Abstract\IEmguCVDrawing.cs" />
-    <Compile Include="Infrustructure\Deserializers\XMLDeserializer.cs" />
-    <Compile Include="Infrustructure\Deserializers\YAMLDeserializer.cs" />
+    <Compile Include="Abstract\EmguCVDrawer.cs" />
+    <Compile Include="Concrete\Drawers\CoordinatedRectangleDrawer.cs" />
+    <Compile Include="Concrete\Drawers\NamedRectangleDrawer.cs" />
+    <Compile Include="Concrete\Drawers\RectangleDrawer.cs" />
+    <Compile Include="Controls\VideoSlider.cs" />
+    <Compile Include="HackTheSystem\GrabberStateFinder.cs" />
+    <Compile Include="Concrete\Deserializers\XMLDeserializer.cs" />
+    <Compile Include="Concrete\Deserializers\YAMLDeserializer.cs" />
+    <Compile Include="Infrustructure\Enums.cs" />
     <Compile Include="Infrustructure\RelayCommand.cs" />
     <Compile Include="Infrustructure\Repository.cs" />
-    <Compile Include="Model\AdditionalObject.cs" />
-    <Compile Include="Model\TimePoint.cs" />
-    <Compile Include="Model\Tracks.cs" />
+    <Compile Include="Concrete\AdditionalObject.cs" />
+    <Compile Include="Concrete\TimePoint.cs" />
+    <Compile Include="Concrete\Tracks.cs" />
     <Compile Include="ViewModel\VideoViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

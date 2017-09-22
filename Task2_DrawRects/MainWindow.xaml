@@ -4,31 +4,93 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EmvuCV_VideoPlayer"
+        xmlns:ctrls="clr-namespace:EmvuCV_VideoPlayer.Controls"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="413" Width="667">
     <Window.Resources>
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="12" />
             <Setter Property="Margin" Value="5" />
         </Style>
-        <Style TargetType="Button">
-            <Setter Property="Width" Value="40" />
+        <Style TargetType="CheckBox">
+            <Setter Property="FontSize" Value="12" />
             <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style x:Key="RadioButtonList" TargetType="{x:Type ListBox}">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="ItemContainerStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type ListBoxItem}" >
+                        <Setter Property="Margin" Value="5" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                    <Border BorderThickness="0" Background="Transparent">
+                                        <RadioButton Focusable="False" IsHitTestVisible="False"
+                                            IsChecked="{TemplateBinding IsSelected}">
+                                            <ContentPresenter />
+                                        </RadioButton>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBox}">
+                        <Border BorderThickness="0" Padding="0" BorderBrush="Transparent" Background="Transparent" SnapsToDevicePixels="True">
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="30"/>
             <RowDefinition />
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" Orientation="Horizontal">
             <TextBlock Text="{Binding Path = Name}" />
         </StackPanel>
-        <Image Grid.Row="1" Source="{Binding Frame}" />
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
+
+        <DockPanel Grid.Row="1" Background="Black">
+            <Image Source="{Binding Frame}" Stretch="Fill"  />
+        </DockPanel>
+
+        <ctrls:VideoSlider Value="{Binding Path=Timestamp}" Grid.Row="2" Maximum="{Binding Path=Duration}" IsMoveToPointEnabled="True" />
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
             <Button Command="{Binding PlayVideoCommand}" CommandParameter="{Binding Capture}" Content="Play"/>
-            <TextBlock Text="{Binding Path= Timestamp}" />
+            <Button Command="{Binding PauseVideoCommand}" CommandParameter="{Binding Capture}" Content="Pause"/>
+            <GroupBox Header="Source">
+                <ListBox Style="{StaticResource RadioButtonList}" SelectedValuePath="Tag" SelectedValue="{Binding Path=SelectedSerializator}">
+                    <ListBoxItem Tag="XmlSerializator">From XML</ListBoxItem>
+                    <ListBoxItem Tag="YamlSerializator">From YAML</ListBoxItem>
+                </ListBox>
+            </GroupBox>
+            <GroupBox Header="Show mode">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <CheckBox Content="Name" IsChecked="{Binding Path=IsNameShowModeSelected}" />
+                    <CheckBox Content="Coordinates" IsChecked="{Binding Path=IsCoordinateShowModeSelected}" />
+                </StackPanel>
+            </GroupBox>
         </StackPanel>
+        <TextBlock Grid.Row="3" Text="{Binding Path= Timestamp}" HorizontalAlignment="Right" VerticalAlignment="Center" />
     </Grid>
 </Window>
