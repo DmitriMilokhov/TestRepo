@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="AdvOrganizer.View.Controls.AdvInfoViewControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdvOrganizer.View.Controls"
+             xmlns:infr="clr-namespace:AdvOrganizer.Infrustructure"
+             mc:Ignorable="d" Width="auto" Height="auto">
+    <UserControl.Resources>
+        <infr:DateTimeToDateConverter x:Key="DateConverter" />
+
+        <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Date: " />
+        <TextBlock Grid.Column="1" Text="{Binding AdvInfo.Date, RelativeSource={RelativeSource AncestorType=UserControl},
+            Converter={StaticResource DateConverter}}" />
+
+        <TextBlock Grid.Row="2" Text="Time: " />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding AdvInfo.Time, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+        <TextBlock Grid.Row="3" Text="Who: " />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding AdvInfo.Advertiser, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+
+        <TextBlock Grid.Row="4" Text="Type: " />
+        <ComboBox Grid.Row="4" Grid.Column="1" ItemsSource="{Binding AdvTypes, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                  DisplayMemberPath="DisplayMember" SelectedValuePath="Type" SelectedValue="{Binding AdvInfo.Type, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+
+        <TextBlock Grid.Row="5" Text="Paid: " />
+        <CheckBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Margin="5" IsChecked="{Binding AdvInfo.IsPaid, 
+            RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+    </Grid>
+</UserControl>

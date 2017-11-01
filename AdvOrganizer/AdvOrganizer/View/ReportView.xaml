@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="AdvOrganizer.View.ReportView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AdvOrganizer.View"
+             xmlns:infr="clr-namespace:AdvOrganizer.Infrustructure"
+             mc:Ignorable="d" Width="auto" Height="auto">
+    <UserControl.Resources>
+        <infr:DateTimeToDateConverter x:Key="dateTimeToDateConverter" />
+        <infr:TimeSpanToShortTimeConverter x:Key="timeSpanToShortTimeConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <DataGrid ItemsSource="{Binding AdvInfos}" AutoGenerateColumns="False" RowHeaderWidth="0" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date, Converter={StaticResource dateTimeToDateConverter}}" />
+                <DataGridTextColumn Header="Who" Binding="{Binding Advertiser}">
+                    <DataGridTextColumn.CellStyle>
+                        <Style>
+                            <Setter Property="FrameworkElement.HorizontalAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.CellStyle>
+                </DataGridTextColumn>
+                <DataGridCheckBoxColumn Header="Paid" Binding="{Binding IsPaid}" />
+                <DataGridTextColumn Header="Time" Binding="{Binding Time, Converter={StaticResource timeSpanToShortTimeConverter}}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

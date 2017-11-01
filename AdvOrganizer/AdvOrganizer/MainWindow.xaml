@@ -1,0 +1,62 @@
+﻿<Controls:MetroWindow x:Class="AdvOrganizer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdvOrganizer"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:MyCtrls="clr-namespace:AdvOrganizer.View.Controls"
+        xmlns:Infr="clr-namespace:AdvOrganizer.Infrustructure"
+        xmlns:Views="clr-namespace:AdvOrganizer.View"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        mc:Ignorable="d" FontSize="16" ResizeMode="NoResize"
+        Title="Adv Organizer" SizeToContent="WidthAndHeight">
+    <Controls:MetroWindow.Resources>
+        <Infr:BindingProxy x:Key="ReportDataContext" Data="{Binding IsReport}" />
+        <BooleanToVisibilityConverter x:Key="booleanToVisibilityConverter" />
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Width" Value="125" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Controls:MetroWindow.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="auto" />
+        </Grid.ColumnDefinitions>
+
+        <Calendar x:Name="calendar" IsTodayHighlighted="True" FirstDayOfWeek="Monday" VerticalAlignment="Top" Margin="5" Height="200">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectedDatesChanged">
+                    <i:InvokeCommandAction Command="{Binding DateChangedCommand}" 
+                                           CommandParameter="{Binding SelectedDates, ElementName=calendar}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Calendar>
+
+        <TabControl Grid.Column="1"> 
+            <TabItem Header="Morning" Width="auto">
+                <MyCtrls:AdvInfoViewControl AdvInfo="{Binding MorningAdvInfo}" />
+            </TabItem>
+            <TabItem Header="Evening" Width="auto">
+                <MyCtrls:AdvInfoViewControl AdvInfo="{Binding EveningAdvInfo}" />
+            </TabItem>
+        </TabControl>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Button Content="Save" Command="{Binding SaveCommand}" />
+            <Button Content="Clean Old" Command="{Binding CleanOldCommand}" />
+            <Button Content="Show Report" Command="{Binding ShowReportCommand}" />
+        </StackPanel>
+
+        <Views:ReportView Grid.RowSpan="3" Grid.Column="2" VerticalAlignment="Top" DataContext="{Binding ReportViewModel}"
+                          Visibility="{Binding Path=Data, Converter={StaticResource booleanToVisibilityConverter}, 
+                          Source={StaticResource ReportDataContext}}"/>
+    </Grid>
+</Controls:MetroWindow>
