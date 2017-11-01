@@ -78,7 +78,7 @@ namespace AdvOrganizer.Infrustructure
             string advContent = File.ReadAllText(filePath);
             var advInfos = new List<AdvInfoModel>();
 
-            return JsonConvert.DeserializeAnonymousType(advContent, advInfos).OrderBy(ad=>ad.Date).ToList();
+            return JsonConvert.DeserializeAnonymousType(advContent, advInfos)?.OrderBy(ad=>ad.Date).ToList();
         }
     }
 }

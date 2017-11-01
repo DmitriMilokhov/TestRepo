@@ -16,7 +16,13 @@ namespace AdvOrganizer.Infrustructure
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return DependencyProperty.UnsetValue;
+            int hour = 0, minute = 0;
+            var data = value.ToString().Split(':');
+
+            int.TryParse(data[0], out hour);
+            int.TryParse(data[1], out minute);
+            
+            return new TimeSpan(hour, minute, 0);
         }
     }
 }

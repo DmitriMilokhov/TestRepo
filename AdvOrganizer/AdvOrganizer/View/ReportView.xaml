@@ -11,7 +11,8 @@
         <infr:TimeSpanToShortTimeConverter x:Key="timeSpanToShortTimeConverter" />
     </UserControl.Resources>
     <Grid>
-        <DataGrid ItemsSource="{Binding AdvInfos}" AutoGenerateColumns="False" RowHeaderWidth="0" IsReadOnly="True">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <DataGrid ItemsSource="{Binding AdvInfos}" AutoGenerateColumns="False" RowHeaderWidth="0" Height="250">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Date" Binding="{Binding Date, Converter={StaticResource dateTimeToDateConverter}}" />
                 <DataGridTextColumn Header="Who" Binding="{Binding Advertiser}">
@@ -25,5 +26,6 @@
                 <DataGridTextColumn Header="Time" Binding="{Binding Time, Converter={StaticResource timeSpanToShortTimeConverter}}" />
             </DataGrid.Columns>
         </DataGrid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

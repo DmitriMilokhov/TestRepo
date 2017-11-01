@@ -29,10 +29,13 @@ namespace AdvOrganizer.ViewModel
         {
             var modelList = repository.GetAllAdvInfos();
 
-            AdvInfos.Clear();
-            foreach (var model in modelList)
+            if (modelList?.Count > 0)
             {
-                AdvInfos.Add(new AdvInfoWrapper(model));
+                AdvInfos.Clear();
+                foreach (var model in modelList)
+                {
+                    AdvInfos.Add(new AdvInfoWrapper(model));
+                }
             }
         }
     }

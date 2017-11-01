@@ -8,18 +8,19 @@
              mc:Ignorable="d" Width="auto" Height="auto">
     <UserControl.Resources>
         <infr:DateTimeToDateConverter x:Key="DateConverter" />
+        <infr:TimeSpanToShortTimeConverter x:Key="timeSpanToShortTimeConverter" />
 
         <Style TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
             <Setter Property="VerticalAlignment" Value="Center" />
         </Style>
         <Style TargetType="TextBox" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Width" Value="150" />
+            <Setter Property="Width" Value="180" />
             <Setter Property="Margin" Value="5" />
         </Style>
         <Style TargetType="ComboBox" BasedOn="{StaticResource {x:Type ComboBox}}">
             <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="Width" Value="150" />
+            <Setter Property="Width" Value="180" />
             <Setter Property="Margin" Value="5" />
         </Style>
     </UserControl.Resources>
@@ -43,7 +44,8 @@
             Converter={StaticResource DateConverter}}" />
 
         <TextBlock Grid.Row="2" Text="Time: " />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding AdvInfo.Time, RelativeSource={RelativeSource AncestorType=UserControl}}"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding AdvInfo.Time, RelativeSource={RelativeSource AncestorType=UserControl}, 
+            Converter={StaticResource timeSpanToShortTimeConverter}}"/>
 
         <TextBlock Grid.Row="3" Text="Who: " />
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding AdvInfo.Advertiser, RelativeSource={RelativeSource AncestorType=UserControl}}" />
