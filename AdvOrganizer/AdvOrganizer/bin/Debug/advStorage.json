@@ -50,7 +50,7 @@
     "Time": "18:00:00",
     "Advertiser": "https://vk.com/id237527317 ",
     "Type": "Post1",
-    "IsPaid": false,
+    "IsPaid": true,
     "IsMorning": false
   },
   {
@@ -225,6 +225,15 @@
     "IsMorning": true
   },
   {
+    "Id": "v1QKjTUU6Q",
+    "Date": "2017-11-29T00:00:00",
+    "Time": "10:00:00",
+    "Advertiser": "https://vk.com/id404861160",
+    "Type": "Post1",
+    "IsPaid": false,
+    "IsMorning": true
+  },
+  {
     "Id": "jiR2LUnXIc",
     "Date": "2017-11-30T00:00:00",
     "Time": "11:00:00",
@@ -241,14 +250,5 @@
     "Type": "Post1",
     "IsPaid": true,
     "IsMorning": false
-  },
-  {
-    "Id": "v1QKjTUU6Q",
-    "Date": "2017-11-29T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id404861160",
-    "Type": "Post1",
-    "IsPaid": false,
-    "IsMorning": true
   }
 ]
