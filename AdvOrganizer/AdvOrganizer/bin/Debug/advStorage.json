@@ -1,23 +1,5 @@
 [
   {
-    "Id": "WlCfTOKfFx",
-    "Date": "2017-11-02T00:00:00",
-    "Time": "12:00:00",
-    "Advertiser": "https://vk.com/id371041152",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": true
-  },
-  {
-    "Id": "y031KbATMx",
-    "Date": "2017-11-02T00:00:00",
-    "Time": "18:00:00",
-    "Advertiser": "Печать",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": false
-  },
-  {
     "Id": "bx89qFOQKO",
     "Date": "2017-11-03T00:00:00",
     "Time": "11:00:00",
@@ -47,7 +29,7 @@
   {
     "Id": "egDHy4rKpc",
     "Date": "2017-11-04T00:00:00",
-    "Time": "18:00:00",
+    "Time": "17:00:00",
     "Advertiser": "https://vk.com/id237527317 ",
     "Type": "Post1",
     "IsPaid": true,
@@ -249,6 +231,15 @@
     "Advertiser": "https://vk.com/id437605666",
     "Type": "Post1",
     "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "xpQna3xuWy",
+    "Date": "2017-11-06T00:00:00",
+    "Time": "19:00:00",
+    "Advertiser": "https://vk.com/id165446478",
+    "Type": "Post1",
+    "IsPaid": false,
     "IsMorning": false
   }
 ]
