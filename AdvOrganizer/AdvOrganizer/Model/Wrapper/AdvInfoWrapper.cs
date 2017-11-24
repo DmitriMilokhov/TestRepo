@@ -1,4 +1,4 @@
-﻿
+﻿using AdvOrganizer.Interface;
 using System;
 
 namespace AdvOrganizer.Model.Wrapper
@@ -48,6 +48,11 @@ namespace AdvOrganizer.Model.Wrapper
         public bool IsMorning
         {
             get { return GetValue<bool>(); }
+        }
+
+        public void Save(IAdvRepository repository)
+        {
+            repository.Save(this.Model);
         }
     }
 }

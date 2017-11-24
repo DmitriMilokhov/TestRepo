@@ -7,12 +7,12 @@ namespace AdvOrganizer.ViewModel
     public class ReportViewModel : ViewModelBase
     {
         private ObservableCollection<AdvInfoWrapper> advInfos;
-        private Repository repository;
+        private AdvJsonRepository repository;
 
         public ReportViewModel()
         {
             AdvInfos = new ObservableCollection<AdvInfoWrapper>();
-            repository = new Repository();
+            repository = new AdvJsonRepository();
         }
 
         public ObservableCollection<AdvInfoWrapper> AdvInfos

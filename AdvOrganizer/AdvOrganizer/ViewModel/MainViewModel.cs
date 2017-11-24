@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using MlkPwgen;
+using AdvOrganizer.Interface;
 
 namespace AdvOrganizer.ViewModel
 {
@@ -19,11 +20,11 @@ namespace AdvOrganizer.ViewModel
         private ICommand saveCommand;
         private ICommand cleanOldCommand;
         private ICommand showReportCommand;
-        private Repository repository;
+        private IAdvRepository repository;
 
         public MainViewModel()
         {
-            repository = new Repository();
+            repository = new AdvJsonRepository();
             ReportViewModel = new ReportViewModel();
             IsReport = false;
         }
@@ -74,7 +75,7 @@ namespace AdvOrganizer.ViewModel
                     if (date != null)
                     {
                         DateTime currentDate = ((IEnumerable<DateTime>)date).FirstOrDefault();
-                        var morningModel = repository.FindAdvInfo(currentDate, true);
+                        var morningModel = (repository as AdvJsonRepository).FindAdvInfo(currentDate, true);
                         if (morningModel == null)
                         {
                             morningModel = new AdvInfoModel()
@@ -86,7 +87,7 @@ namespace AdvOrganizer.ViewModel
                         MorningAdvInfo = new AdvInfoWrapper(morningModel);
 
 
-                        var eveningModel = repository.FindAdvInfo(currentDate, false);
+                        var eveningModel = (repository as AdvJsonRepository).FindAdvInfo(currentDate, false);
                         if (eveningModel == null)
                         {
                             eveningModel = new AdvInfoModel()
@@ -108,9 +109,9 @@ namespace AdvOrganizer.ViewModel
                 return saveCommand ?? (saveCommand = new RelayCommand(obj =>
                 {
                     if (MorningAdvInfo.Time.Hours != 0)
-                        repository.SaveToJson(MorningAdvInfo.Model);
+                        MorningAdvInfo.Save(repository);
                     if (EveningAdvInfo.Time.Hours != 0)
-                        repository.SaveToJson(EveningAdvInfo.Model);
+                        EveningAdvInfo.Save(repository);
                 }));
             }
         }

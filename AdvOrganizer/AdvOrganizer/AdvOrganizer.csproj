@@ -75,11 +75,12 @@
     <Compile Include="Infrustructure\AdvLookupItem.cs" />
     <Compile Include="Infrustructure\BindingProxy.cs" />
     <Compile Include="Infrustructure\DateTimeToDateConverter.cs" />
+    <Compile Include="Interface\IAdvRepository.cs" />
     <Compile Include="Infrustructure\LookupDataService.cs" />
     <Compile Include="Infrustructure\LookupItem.cs" />
     <Compile Include="Infrustructure\NotifyDataErrorInfoBase.cs" />
     <Compile Include="Infrustructure\RelayCommand.cs" />
-    <Compile Include="Infrustructure\Repository.cs" />
+    <Compile Include="Infrustructure\AdvJsonRepository.cs" />
     <Compile Include="Infrustructure\TimeSpanToShortTimeConverter.cs" />
     <Compile Include="Model\AdvInfoModel.cs" />
     <Compile Include="Model\Enums.cs" />

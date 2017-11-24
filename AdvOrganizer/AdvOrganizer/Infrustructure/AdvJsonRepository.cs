@@ -4,14 +4,15 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.IO;
+using AdvOrganizer.Interface;
 
 namespace AdvOrganizer.Infrustructure
 {
-    public class Repository
+    public class AdvJsonRepository : IAdvRepository
     {
         private string filePath = Environment.CurrentDirectory + "\\advStorage.json";
 
-        public void SaveToJson(AdvInfoModel newAdvInfo)
+        public void Save(AdvInfoModel newAdvInfo)
         {
             if (File.Exists(filePath))
             {

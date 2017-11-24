@@ -1,182 +1,20 @@
 [
   {
-    "Id": "bx89qFOQKO",
-    "Date": "2017-11-03T00:00:00",
-    "Time": "11:00:00",
-    "Advertiser": "https://vk.com/id437605666",
-    "Type": "Post3",
-    "IsPaid": true,
-    "IsMorning": true
-  },
-  {
-    "Id": "j6yxb4Qcze",
-    "Date": "2017-11-03T00:00:00",
+    "Id": "J4kyYowDp7",
+    "Date": "2017-11-24T00:00:00",
     "Time": "18:00:00",
-    "Advertiser": "https://vk.com/id407105630",
-    "Type": "None",
-    "IsPaid": false,
-    "IsMorning": false
-  },
-  {
-    "Id": "fzTE3k3rBj",
-    "Date": "2017-11-04T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id404861160",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": true
-  },
-  {
-    "Id": "egDHy4rKpc",
-    "Date": "2017-11-04T00:00:00",
-    "Time": "17:00:00",
-    "Advertiser": "https://vk.com/id237527317 ",
+    "Advertiser": "https://vk.com/fakeev_i",
     "Type": "Post1",
     "IsPaid": true,
     "IsMorning": false
   },
   {
-    "Id": "1E6IrgsDQD",
-    "Date": "2017-11-05T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id404861160 ",
-    "Type": "Post1",
-    "IsPaid": false,
-    "IsMorning": true
-  },
-  {
-    "Id": "jC24YMvJ9l",
-    "Date": "2017-11-05T00:00:00",
-    "Time": "18:00:00",
-    "Advertiser": "https://vk.com/id371041152",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": false
-  },
-  {
-    "Id": "aeZd61BJxW",
-    "Date": "2017-11-06T00:00:00",
-    "Time": "11:00:00",
-    "Advertiser": "https://vk.com/id437605666",
-    "Type": "Post3",
-    "IsPaid": true,
-    "IsMorning": true
-  },
-  {
-    "Id": "xpQna3xuWy",
-    "Date": "2017-11-06T00:00:00",
-    "Time": "19:00:00",
+    "Id": "VJiEkJhzWv",
+    "Date": "2017-11-24T00:00:00",
+    "Time": "12:00:00",
     "Advertiser": "https://vk.com/id165446478",
     "Type": "Post1",
     "IsPaid": false,
-    "IsMorning": false
-  },
-  {
-    "Id": "e4uw2kinsN",
-    "Date": "2017-11-08T00:00:00",
-    "Time": "11:00:00",
-    "Advertiser": "https://vk.com/id437605666",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": true
-  },
-  {
-    "Id": "1hf3OCG340",
-    "Date": "2017-11-09T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id404861160",
-    "Type": "Post1",
-    "IsPaid": false,
-    "IsMorning": true
-  },
-  {
-    "Id": "BV9v9ZgzZg",
-    "Date": "2017-11-10T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id404861160",
-    "Type": "Post1",
-    "IsPaid": false,
-    "IsMorning": true
-  },
-  {
-    "Id": "WfaXgTT2tO",
-    "Date": "2017-11-13T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id437605666",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": true
-  },
-  {
-    "Id": "vrWsJxtQ9E",
-    "Date": "2017-11-13T00:00:00",
-    "Time": "17:00:00",
-    "Advertiser": "https://vk.com/id437605666",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": false
-  },
-  {
-    "Id": "x5yNb3PS0p",
-    "Date": "2017-11-16T00:00:00",
-    "Time": "11:00:00",
-    "Advertiser": "https://vk.com/id437605666",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": true
-  },
-  {
-    "Id": "XJttVy6xLl",
-    "Date": "2017-11-18T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id404861160",
-    "Type": "Post1",
-    "IsPaid": false,
-    "IsMorning": true
-  },
-  {
-    "Id": "uMXXTeuiU1",
-    "Date": "2017-11-19T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id404861160",
-    "Type": "Post1",
-    "IsPaid": false,
-    "IsMorning": true
-  },
-  {
-    "Id": "4k6YSDauXs",
-    "Date": "2017-11-20T00:00:00",
-    "Time": "17:00:00",
-    "Advertiser": "https://vk.com/id437605666",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": false
-  },
-  {
-    "Id": "khIIfLSzJ4",
-    "Date": "2017-11-20T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id437605666",
-    "Type": "Post1",
-    "IsPaid": true,
-    "IsMorning": true
-  },
-  {
-    "Id": "9U6rTswKIb",
-    "Date": "2017-11-21T00:00:00",
-    "Time": "10:00:00",
-    "Advertiser": "https://vk.com/id404861160",
-    "Type": "Post1",
-    "IsPaid": false,
-    "IsMorning": true
-  },
-  {
-    "Id": "1ZNtNVfbTd",
-    "Date": "2017-11-23T00:00:00",
-    "Time": "11:00:00",
-    "Advertiser": "https://vk.com/id437605666",
-    "Type": "Post1",
-    "IsPaid": true,
     "IsMorning": true
   },
   {
@@ -187,6 +25,33 @@
     "Type": "Post1",
     "IsPaid": false,
     "IsMorning": true
+  },
+  {
+    "Id": "DWKH3yjOVh",
+    "Date": "2017-11-25T00:00:00",
+    "Time": "17:30:00",
+    "Advertiser": "https://vk.com/dementia22",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "bsQwt6roDa",
+    "Date": "2017-11-26T00:00:00",
+    "Time": "10:00:00",
+    "Advertiser": "https://vk.com/id9022705",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": true
+  },
+  {
+    "Id": "WN97AoFMan",
+    "Date": "2017-11-26T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/alexxeyermakov",
+    "Type": "Post1",
+    "IsPaid": false,
+    "IsMorning": false
   },
   {
     "Id": "I2ao38uxGq",
@@ -216,6 +81,15 @@
     "IsMorning": true
   },
   {
+    "Id": "fd9NvT7LL4",
+    "Date": "2017-11-28T00:00:00",
+    "Time": "18:00:00",
+    "Advertiser": "https://vk.com/id121937009",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
     "Id": "v1QKjTUU6Q",
     "Date": "2017-11-29T00:00:00",
     "Time": "10:00:00",
@@ -234,8 +108,197 @@
     "IsMorning": true
   },
   {
+    "Id": "ZyO8wYwvBN",
+    "Date": "2017-11-30T00:00:00",
+    "Time": "18:00:00",
+    "Advertiser": "https://vk.com/id121937009",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
     "Id": "cFbHWiFrHf",
     "Date": "2017-12-01T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "6pmJZCL7Qv",
+    "Date": "2017-12-02T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "wC2UbCFpPR",
+    "Date": "2017-12-02T00:00:00",
+    "Time": "10:00:00",
+    "Advertiser": "https://vk.com/id121937009",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": true
+  },
+  {
+    "Id": "6HZ00G4fXk",
+    "Date": "2017-12-03T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/lix86",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "0iSgzSK2b8",
+    "Date": "2017-12-04T00:00:00",
+    "Time": "10:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post3",
+    "IsPaid": true,
+    "IsMorning": true
+  },
+  {
+    "Id": "mG4cXYQHAU",
+    "Date": "2017-12-04T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "kKzH7RsMmq",
+    "Date": "2017-12-05T00:00:00",
+    "Time": "20:00:00",
+    "Advertiser": "https://vk.com/lix86",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "X1OmKRIqo4",
+    "Date": "2017-12-08T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "UyZje0cZdF",
+    "Date": "2017-12-09T00:00:00",
+    "Time": "18:00:00",
+    "Advertiser": "https://vk.com/mangelw",
+    "Type": "Post1",
+    "IsPaid": false,
+    "IsMorning": false
+  },
+  {
+    "Id": "CUqLdW6s48",
+    "Date": "2017-12-09T00:00:00",
+    "Time": "12:00:00",
+    "Advertiser": "https://vk.com/lix86",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": true
+  },
+  {
+    "Id": "pxApvfB5ah",
+    "Date": "2017-12-11T00:00:00",
+    "Time": "18:00:00",
+    "Advertiser": "https://vk.com/mangelw",
+    "Type": "Post1",
+    "IsPaid": false,
+    "IsMorning": false
+  },
+  {
+    "Id": "Qadn1dy1kh",
+    "Date": "2017-12-11T00:00:00",
+    "Time": "10:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post3",
+    "IsPaid": true,
+    "IsMorning": true
+  },
+  {
+    "Id": "lAY9nbi226",
+    "Date": "2017-12-15T00:00:00",
+    "Time": "10:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post3",
+    "IsPaid": true,
+    "IsMorning": true
+  },
+  {
+    "Id": "RykRU3zn4i",
+    "Date": "2017-12-15T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "Qow3MWgZCB",
+    "Date": "2017-12-18T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "INiAW4v28T",
+    "Date": "2017-12-18T00:00:00",
+    "Time": "10:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post3",
+    "IsPaid": true,
+    "IsMorning": true
+  },
+  {
+    "Id": "iGAQB73PcJ",
+    "Date": "2017-12-22T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "NA8DJXBT5K",
+    "Date": "2017-12-25T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "lRG23FxD1b",
+    "Date": "2017-12-25T00:00:00",
+    "Time": "10:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post3",
+    "IsPaid": true,
+    "IsMorning": true
+  },
+  {
+    "Id": "gsOvFk9gsC",
+    "Date": "2017-12-29T00:00:00",
+    "Time": "17:00:00",
+    "Advertiser": "https://vk.com/id437605666",
+    "Type": "Post1",
+    "IsPaid": true,
+    "IsMorning": false
+  },
+  {
+    "Id": "68gvCB1J1m",
+    "Date": "2017-12-30T00:00:00",
     "Time": "17:00:00",
     "Advertiser": "https://vk.com/id437605666",
     "Type": "Post1",
